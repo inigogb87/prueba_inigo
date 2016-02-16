@@ -63,11 +63,11 @@
 			</div>
 
 			<div class="form-group">
-				<label for="pais" class="col-sm-2 control-label"
-					style="margin: 80px 0;">Pais</label>
+				<label for="argumento" class="col-sm-2 control-label"
+					style="margin: 80px 0;">Argumento</label>
 				<div class="col-sm-10">
-					<textarea class="form-control" rows="3" name="pais"
-						placeholder="Escribe algun pais" style="margin: 10px 0;"><%=per.getPais()%></textarea>
+					<textarea class="form-control" rows="3" name="argumento"
+						placeholder="Escribe algo" style="margin: 10px 0;"><%=per.getArgumento()%></textarea>
 				</div>
 			</div>
 
@@ -75,7 +75,7 @@
 				<label for="paginas" class="col-sm-2 control-label"
 					style="margin: 10px 0;">Paginas</label>
 				<div class="col-sm-10">
-					<input type="email" name="paginas" placeholder="Escribe paginas"
+					<input type="text" name="paginas" placeholder="Escribe paginas"
 						value="<%=per.getPaginas()%>" size="60" required style="margin: 10px 0;">
 				</div>
 			</div>
@@ -87,7 +87,7 @@
 				type="hidden" name="nombre" value="<%=per.getNombre()%>"> <input
 				type="hidden" name="editorial" value="<%=per.getEditorial()%>"> <input
 				type="hidden" name="autor" value="<%=per.getAutor()%>"> <input
-				type="hidden" name="pais" value="<%=per.getPais()%>"><input
+				type="hidden" name="argumento" value="<%=per.getArgumento()%>"><input
 				type="hidden" name="paginas" value="<%=per.getPaginas()%>">  <input
 				type="hidden" name="op"
 				value="<%=Constantes.OP_MODIFICAR%>">

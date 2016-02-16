@@ -105,7 +105,7 @@ public class LibroServlet extends MasterServlet {
 		String pNombre = request.getParameter("nombre"), 
 				pEditorial = request.getParameter("Editorial"),
 				pAutor = request.getParameter("Autor"), 
-				pPais = request.getParameter("pais");
+				pArgumento = request.getParameter("argumento");
 
 		// construir un libro
 		Libro libro = new Libro();
@@ -113,7 +113,7 @@ public class LibroServlet extends MasterServlet {
 		libro.setNombre(pNombre);
 		libro.setEditorial(pEditorial);
 		libro.setAutor(pAutor);
-		libro.setPais(pPais);
+		libro.setArgumento(pArgumento);
 		libro.setPaginas(pPaginas);
 
 		

@@ -41,13 +41,13 @@
 							<th>Nombre</th>
 							<th>Editorial</th>
 							<th>Autor</th>
-							<th>Pais</th>
+							<th>argumento</th>
 							<th>Paginas</th>
 						</tr>
 					</thead>
 					<tbody>
 						<%
-							//recoger "atributo listado personas de la request
+							//recoger "atributo listado libros de la request
 							ArrayList<Libro> lista = (ArrayList<Libro>) request.getAttribute("listaLibros");
 							if (lista == null)
 								lista = new ArrayList<Libro>();
@@ -61,7 +61,7 @@
 								title="Ir al detalle de <%=pojo.getNombre()%>"><%=pojo.getNombre()%></a></td>
 							<td><%=pojo.getEditorial()%></td>
 							<td><%=pojo.getAutor()%></td>
-							<td><%=pojo.getPais()%></td>
+							<td><%=pojo.getArgumento()%></td>
 							<td><%=pojo.getPaginas()%></td>
 						</tr>
 						<%
