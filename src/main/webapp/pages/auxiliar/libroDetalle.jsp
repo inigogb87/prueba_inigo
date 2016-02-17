@@ -22,7 +22,7 @@
 		</div>
 
 		<!-- Formularios -->
-		<form method="post" action="back/usuarios">
+		<form method="post" action="back/libros">
 
 			<div class="form-group">
 				<label for="id" class="col-sm-2 control-label"
@@ -121,15 +121,15 @@
 							<span aria-hidden="true">×</span><span class="sr-only">Cerrar</span>
 						</button>
 						<h4 class="modal-title" id="myModalLabel">Eliminación de
-							usuario</h4>
+							libro</h4>
 					</div>
 					<div id="nuevaAventura" class="modal-body">
-						<form method="post" action="back/usuarios">
+						<form method="post" action="back/libros">
 							<div class="form-group">
 								<input type="hidden" name="op"
 									value="<%=Constantes.OP_ELIMINAR%>"> <input
 									type="hidden" name="id" value="<%=per.getId()%>"> <label
-									for="aviso">¿Está seguro que desea eliminar al usuario?
+									for="aviso">¿Está seguro que desea eliminar el libro?
 									Esta acción no se puede deshacer.</label>
 								<button type="submit" class="btn btn-danger" id="eliminacion"
 									style="margin: 10px 0;">Eliminar</button>

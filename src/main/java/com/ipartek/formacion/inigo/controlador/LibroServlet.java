@@ -6,23 +6,23 @@ import java.text.MessageFormat;
 import java.text.ParseException;
 import java.util.ArrayList;
 
-
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.ipartek.formacion.inigo.constante.Constantes;
 import com.ipartek.formacion.inigo.pojo.Libro;
-
-
 
 /**
  * Servlet implementation class LibroServlet
  */
 public class LibroServlet extends MasterServlet {
 	private static final long serialVersionUID = 1L;
+	private final static Logger log = Logger.getLogger(LibroServlet.class);
 
 	private static int operacion;
 	private static String pId; // Parámetro identificador del libro, aunque sea
@@ -35,8 +35,7 @@ public class LibroServlet extends MasterServlet {
 		super.init(config);
 	}
 
-	public void service(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		super.service(request, response);
 	}
 
@@ -44,8 +43,8 @@ public class LibroServlet extends MasterServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
 		try {
 			// recoger parámetros a realizar
@@ -96,16 +95,13 @@ public class LibroServlet extends MasterServlet {
 	 * @throws SQLException
 	 */
 
-	private void modificarCrear(HttpServletRequest request)
-			throws ParseException, SQLException {
+	private void modificarCrear(HttpServletRequest request) throws ParseException, SQLException {
 		// recoger parámetros formulario
-		int pId = Integer.parseInt(request.getParameter("id")), 
-			pPaginas = Integer.parseInt(request.getParameter("paginas"));
+		int pId = Integer.parseInt(request.getParameter("id")),
+				pPaginas = Integer.parseInt(request.getParameter("paginas"));
 
-		String pNombre = request.getParameter("nombre"), 
-				pEditorial = request.getParameter("Editorial"),
-				pAutor = request.getParameter("Autor"), 
-				pArgumento = request.getParameter("argumento");
+		String pNombre = request.getParameter("nombre"), pEditorial = request.getParameter("Editorial"),
+				pAutor = request.getParameter("Autor"), pArgumento = request.getParameter("argumento");
 
 		// construir un libro
 		Libro libro = new Libro();
@@ -116,42 +112,35 @@ public class LibroServlet extends MasterServlet {
 		libro.setArgumento(pArgumento);
 		libro.setPaginas(pPaginas);
 
-		
-
 		// persistir en la bbdd
 		if (libro.getId() == -1)
-			if (daoLibro.insert(libro) != -1)
-				msj = new Mensaje("libro insertado con éxito",
-						Mensaje.TIPO_SUCCESS);
-			else
-				msj = new Mensaje("No se ha insertado el libro",
-						Mensaje.TIPO_WARNING);
+			if (daoLibro.insert(libro) != -1) {
+				msj = new Mensaje("libro insertado con éxito", Mensaje.TIPO_SUCCESS);
+
+			} else {
+				msj = new Mensaje("No se ha insertado el libro", Mensaje.TIPO_WARNING);
+
+			}
 		else if (daoLibro.update(libro)) {
-			msj = new Mensaje(MessageFormat.format(
-					messages.getString("msj.registro.modificado"),
-					messages.getString("label.libro")), Mensaje.TIPO_SUCCESS);
+
+			msj = new Mensaje("Libro modificada con éxito", Mensaje.TIPO_SUCCESS);
 		} else {
-			msj = new Mensaje("No se ha modificado el registro",
-					Mensaje.TIPO_WARNING);
+			msj = new Mensaje("No se ha modificado el registro", Mensaje.TIPO_WARNING);
 		}
 		// listar
 		listar(request);
-
 	}
 
 	private void eliminar(HttpServletRequest request) throws SQLException {
 		try {
 			int id = Integer.parseInt(request.getParameter("id"));
 			if (daoLibro.delete(id)) {
-				msj = new Mensaje("Registro eliminado con éxito",
-						Mensaje.TIPO_SUCCESS);
+				msj = new Mensaje("Registro eliminado con éxito", Mensaje.TIPO_SUCCESS);
 			} else {
-				msj = new Mensaje("No se ha eliminado el registro",
-						Mensaje.TIPO_DANGER);
+				msj = new Mensaje("No se ha eliminado el registro", Mensaje.TIPO_DANGER);
 			}
 		} catch (Exception e) {
-			msj = new Mensaje("No se ha eliminado el registro",
-					Mensaje.TIPO_DANGER);
+			msj = new Mensaje("No se ha eliminado el registro", Mensaje.TIPO_DANGER);
 		}
 		listar(request);
 
@@ -166,18 +155,16 @@ public class LibroServlet extends MasterServlet {
 	private void nuevo(HttpServletRequest request) throws SQLException {
 		Libro libro = new Libro();
 		request.setAttribute("libro", libro);
-		ArrayList<Libro> libros = (ArrayList<Libro>) daoLibro.getAll();
+		
 		dispatch = request.getRequestDispatcher(Constantes.VIEW_LIBRO_FORM);
 
 	}
 
-	private void detalle(HttpServletRequest request)
-			throws NumberFormatException, SQLException {
+	private void detalle(HttpServletRequest request) throws NumberFormatException, SQLException {
 		pId = request.getParameter("id");
 		Libro libro = daoLibro.getById(Integer.parseInt(pId));
 		request.setAttribute("libro", libro);
-		ArrayList<Libro> libros = (ArrayList<Libro>) daoLibro.getAll();
-		request.setAttribute("libros", libros);
+		
 		dispatch = request.getRequestDispatcher(Constantes.VIEW_LIBRO_FORM);
 
 	}
@@ -200,8 +187,8 @@ public class LibroServlet extends MasterServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doGet(request, response);
 	}
 

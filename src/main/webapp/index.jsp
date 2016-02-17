@@ -8,7 +8,7 @@
 <div id="page-wrapper">
 	<div class="row">
 		<div class="col-lg-12">
-			<h1 class="page-header">Bienvenido ${sessionScope.userlogged.nombre}</h1>
+			<h1 class="page-header">Bienvenido</h1>
 			
 			
 			

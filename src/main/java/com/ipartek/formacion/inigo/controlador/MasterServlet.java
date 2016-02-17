@@ -27,7 +27,7 @@ public class MasterServlet extends HttpServlet {
 	
 		
 	protected RequestDispatcher dispatch; // El que se encarga de enrutar. Solo puede ir a un sitio, no se puede cargar dos veces	
-	protected HttpSession session;
+	
 	
 	protected ResourceBundle messages; //fichero de properties
 	protected static Mensaje msj; //Mensaje a mostrar la usuario
@@ -57,7 +57,7 @@ public class MasterServlet extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");			
 		msj = null;
-		session = request.getSession();
+		
 		messages = null;
 		super.service(request, response);
 	}

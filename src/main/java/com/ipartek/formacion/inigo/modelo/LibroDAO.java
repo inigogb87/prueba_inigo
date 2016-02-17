@@ -6,9 +6,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.apache.log4j.Logger;
+
 import com.ipartek.formacion.inigo.pojo.Libro;
 
 public class LibroDAO implements Persistable<Libro> {
+	private final static Logger log = Logger.getLogger(LibroDAO.class);
 
 	@Override
 	public List<Libro> getAll() throws SQLException {
@@ -78,9 +82,9 @@ public class LibroDAO implements Persistable<Libro> {
 			pst.setString(1, persistable.getNombre());
 			pst.setString(2, persistable.getEditorial());
 			pst.setString(3, persistable.getAutor());
-			pst.setString(5, persistable.getArgumento());
-			pst.setInt(6, persistable.getPaginas());
-
+			pst.setString(4, persistable.getArgumento());
+			pst.setInt(5, persistable.getPaginas());
+			pst.setInt(6, persistable.getId());
 			if (pst.executeUpdate() == 1)// Si solo afecta a una línea
 				resul = true;
 		}
@@ -116,6 +120,8 @@ public class LibroDAO implements Persistable<Libro> {
 		} catch (Exception e) {
 			i = -1;
 			e.printStackTrace();
+			log.error("Excepcion al insertar en la base de datos "
+					+ e.getMessage());
 		}
 		conn.desconectar();
 		return i;
