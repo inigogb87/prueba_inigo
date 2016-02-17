@@ -100,8 +100,8 @@ public class LibroServlet extends MasterServlet {
 		int pId = Integer.parseInt(request.getParameter("id")),
 				pPaginas = Integer.parseInt(request.getParameter("paginas"));
 
-		String pNombre = request.getParameter("nombre"), pEditorial = request.getParameter("Editorial"),
-				pAutor = request.getParameter("Autor"), pArgumento = request.getParameter("argumento");
+		String pNombre = request.getParameter("nombre"), pEditorial = request.getParameter("editorial"),
+				pAutor = request.getParameter("autor"), pArgumento = request.getParameter("argumento");
 
 		// construir un libro
 		Libro libro = new Libro();
@@ -123,7 +123,7 @@ public class LibroServlet extends MasterServlet {
 			}
 		else if (daoLibro.update(libro)) {
 
-			msj = new Mensaje("Libro modificada con éxito", Mensaje.TIPO_SUCCESS);
+			msj = new Mensaje("Libro modificado con éxito", Mensaje.TIPO_SUCCESS);
 		} else {
 			msj = new Mensaje("No se ha modificado el registro", Mensaje.TIPO_WARNING);
 		}
@@ -155,7 +155,7 @@ public class LibroServlet extends MasterServlet {
 	private void nuevo(HttpServletRequest request) throws SQLException {
 		Libro libro = new Libro();
 		request.setAttribute("libro", libro);
-		
+
 		dispatch = request.getRequestDispatcher(Constantes.VIEW_LIBRO_FORM);
 
 	}
@@ -164,7 +164,7 @@ public class LibroServlet extends MasterServlet {
 		pId = request.getParameter("id");
 		Libro libro = daoLibro.getById(Integer.parseInt(pId));
 		request.setAttribute("libro", libro);
-		
+
 		dispatch = request.getRequestDispatcher(Constantes.VIEW_LIBRO_FORM);
 
 	}
