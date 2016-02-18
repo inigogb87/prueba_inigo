@@ -1,4 +1,4 @@
-Proyecto realizado por  Iñigo Gonzalez Benito
+Proyecto realizado por  Iñigo 
 
 Aplicacion web que gestiona una libreria con java y utiliza una base de datos en SQL
 
