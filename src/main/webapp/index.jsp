@@ -8,8 +8,8 @@
 <div id="page-wrapper">
 	<div class="row">
 		<div class="col-lg-12">
-			<h1 class="page-header">Bienvenido</h1>
-			
+			<h1 class="page-header">Bienvenido a la libreria</h1>
+			<IMG SRC="img/Libreria-Obidos-Iglesia-4.jpg" WIDTH=950 HEIGHT=700 BORDER=2 >
 			
 			
 		</div>
@@ -20,8 +20,7 @@
 		
 		
 		
-		</ol>		
-		
+			
 	</div>
 	<!-- /.row -->
 </div>

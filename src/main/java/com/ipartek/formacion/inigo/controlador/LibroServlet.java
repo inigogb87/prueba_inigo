@@ -80,7 +80,7 @@ public class LibroServlet extends MasterServlet {
 			dispatch.forward(request, response);
 		} catch (Exception e) {
 			// TODO mejor en un LOG
-			e.printStackTrace();
+			log.error("Excepcion al recibir el GET " + e.getMessage());
 
 			// TODO ir a página error 404.jsp o 500.jsp
 		}
@@ -101,7 +101,7 @@ public class LibroServlet extends MasterServlet {
 				pPaginas = Integer.parseInt(request.getParameter("paginas"));
 
 		String pNombre = request.getParameter("nombre"), pEditorial = request.getParameter("editorial"),
-				pAutor = request.getParameter("autor"), pArgumento = request.getParameter("argumento");
+				pAutor = request.getParameter("autor"), pPais = request.getParameter("pais");
 
 		// construir un libro
 		Libro libro = new Libro();
@@ -109,7 +109,7 @@ public class LibroServlet extends MasterServlet {
 		libro.setNombre(pNombre);
 		libro.setEditorial(pEditorial);
 		libro.setAutor(pAutor);
-		libro.setArgumento(pArgumento);
+		libro.setPais(pPais);
 		libro.setPaginas(pPaginas);
 
 		// persistir en la bbdd
@@ -141,6 +141,7 @@ public class LibroServlet extends MasterServlet {
 			}
 		} catch (Exception e) {
 			msj = new Mensaje("No se ha eliminado el registro", Mensaje.TIPO_DANGER);
+			log.error("Excepcion al eliminar " + e.getMessage());
 		}
 		listar(request);
 
@@ -192,4 +193,5 @@ public class LibroServlet extends MasterServlet {
 		doGet(request, response);
 	}
 
+	
 }

@@ -38,7 +38,7 @@
 					style="margin: 10px 0;">Nombre</label>
 				<div class="col-sm-10">
 					<input type="text" name="nombre" placeholder="Escribe tu nombre"
-						value="<%=per.getNombre()%>" required
+						value="<%=per.getNombre()%>"  required
 						style="margin: 10px 0;"
 						size="60" autofocus>
 				</div>
@@ -49,7 +49,7 @@
 					style="margin: 10px 0;">Editorial</label>
 				<div class="col-sm-10">
 					<input type="text" name="editorial" placeholder="Escribe la editorial"
-						value="<%=per.getEditorial()%>" size="60" required style="margin: 10px 0;">
+						value="<%=per.getEditorial()%>"  size="60" required style="margin: 10px 0;">
 				</div>
 			</div>
 
@@ -58,16 +58,16 @@
 					style="margin: 10px 0;">Autor</label>
 				<div class="col-sm-10">
 					<input type="text" name="autor" placeholder="Escribe el autor"
-						value="<%=per.getAutor()%>" size="60" required style="margin: 10px 0;">
+						value="<%=per.getAutor()%>"   size="60" required style="margin: 10px 0;">
 				</div>
 			</div>
 
 			<div class="form-group">
-				<label for="argumento" class="col-sm-2 control-label"
-					style="margin: 80px 0;">Argumento</label>
+				<label for="pais" class="col-sm-2 control-label"
+					style="margin: 10px 0;">Pais</label>
 				<div class="col-sm-10">
-					<textarea class="form-control" rows="3" name="argumento"
-						placeholder="Escribe algo" style="margin: 10px 0;"><%=per.getArgumento()%></textarea>
+					<input type="text" name="pais" placeholder="Escribe el pais"
+						value="<%=per.getPais()%>"   size="60" required style="margin: 10px 0;">
 				</div>
 			</div>
 
@@ -76,7 +76,7 @@
 					style="margin: 10px 0;">Paginas</label>
 				<div class="col-sm-10">
 					<input type="text" name="paginas" placeholder="Escribe paginas"
-						value="<%=per.getPaginas()%>" size="60" required style="margin: 10px 0;">
+						value="<%=per.getPaginas()%>" onChange="validarSiNumero(this.value);" size="60" required style="margin: 10px 0;">
 				</div>
 			</div>
 
@@ -87,7 +87,7 @@
 				type="hidden" name="nombre" value="<%=per.getNombre()%>"> <input
 				type="hidden" name="editorial" value="<%=per.getEditorial()%>"> <input
 				type="hidden" name="autor" value="<%=per.getAutor()%>"> <input
-				type="hidden" name="argumento" value="<%=per.getArgumento()%>"><input
+				type="hidden" name="pais" value="<%=per.getPais()%>"><input
 				type="hidden" name="paginas" value="<%=per.getPaginas()%>">  <input
 				type="hidden" name="op"
 				value="<%=Constantes.OP_MODIFICAR%>">
@@ -148,3 +148,10 @@
 <!-- END <div id="page-wrapper"> -->
 
 <%@include file="../../includes/footer.jsp"%>
+
+<script>
+  function validarSiNumero(numero){
+    if (!/^([0-9])*$/.test(numero))
+      alert("El valor " + numero + " no es un número");
+  }
+</script>

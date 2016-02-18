@@ -41,7 +41,7 @@
 								title="Ir al detalle de <%=per.getNombre()%>"><%=per.getNombre()%></a></td>
 							<td><%=per.getEditorial()%></td>
 							<td><%=per.getAutor()%></td>
-							<td><%=per.getArgumento()%></td>
+							<td><%=per.getPais()%></td>
 							<td><%=per.getPaginas()%></td>
 						</tr>
 						<%

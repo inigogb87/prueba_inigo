@@ -19,7 +19,7 @@ public class LibroDAO implements Persistable<Libro> {
 
 		DbConnection conn = new DbConnection();
 
-		String sentencia = "select " + "`id`, " + "`nombre`, " + "`editorial`, " + "`autor`, " + "`argumento`, "
+		String sentencia = "select " + "`id`, " + "`nombre`, " + "`editorial`, " + "`autor`, " + "`pais`, "
 				+ "`paginas`" + "from `libro`;";
 		PreparedStatement consulta = conn.getConnection().prepareStatement(sentencia);
 		ResultSet res = consulta.executeQuery();
@@ -41,7 +41,7 @@ public class LibroDAO implements Persistable<Libro> {
 		// Se abre conexión
 		DbConnection conn = new DbConnection();
 		// nombre de la clase y ctrl + espacio
-		String sql = "select  `id`,`nombre`, `editorial`, `autor`," + " `argumento`, " + " paginas" + " from libro "
+		String sql = "select  `id`,`nombre`, `editorial`, `autor`," + " `pais`, " + " paginas" + " from libro "
 				+ " where `id` = ?;";
 
 		PreparedStatement consulta = conn.getConnection().prepareStatement(sql);
@@ -77,12 +77,12 @@ public class LibroDAO implements Persistable<Libro> {
 		boolean resul = false;
 		if (persistable != null) {
 			DbConnection conn = new DbConnection();
-			String sql = "update `libro` set nombre = ?, editorial = ?, autor = ?, argumento = ?, paginas = ? where `id` = ? ;";
+			String sql = "update `libro` set nombre = ?, editorial = ?, autor = ?, pais = ?, paginas = ? where `id` = ? ;";
 			PreparedStatement pst = conn.getConnection().prepareStatement(sql);
 			pst.setString(1, persistable.getNombre());
 			pst.setString(2, persistable.getEditorial());
 			pst.setString(3, persistable.getAutor());
-			pst.setString(4, persistable.getArgumento());
+			pst.setString(4, persistable.getPais());
 			pst.setInt(5, persistable.getPaginas());
 			pst.setInt(6, persistable.getId());
 			if (pst.executeUpdate() == 1)// Si solo afecta a una línea
@@ -98,13 +98,13 @@ public class LibroDAO implements Persistable<Libro> {
 		// Se abre conexión
 		DbConnection conn = new DbConnection();
 		try {
-			String sql = "INSERT INTO `libro` (`nombre`, `editorial`, `autor`, `argumento`, `paginas`) VALUES (?,?,?,?,?);";
+			String sql = "INSERT INTO `libro` (`nombre`, `editorial`, `autor`, `pais`, `paginas`) VALUES (?,?,?,?,?);";
 			PreparedStatement pst = conn.getConnection().prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 
 			pst.setString(1, persistable.getNombre());
 			pst.setString(2, persistable.getEditorial());
 			pst.setString(3, persistable.getAutor());
-			pst.setString(4, persistable.getArgumento());
+			pst.setString(4, persistable.getPais());
 			pst.setInt(5, persistable.getPaginas());
 			// ejecutar la consulta. Si no afecta a una línea, lanzamos la
 			// excepción
@@ -134,7 +134,7 @@ public class LibroDAO implements Persistable<Libro> {
 		l.setNombre(res.getString("nombre"));
 		l.setEditorial(res.getString("editorial"));
 		l.setAutor(res.getString("autor"));
-		l.setArgumento(res.getString("argumento"));
+		l.setPais(res.getString("pais"));
 		l.setPaginas(res.getInt("paginas"));
 
 		return l;

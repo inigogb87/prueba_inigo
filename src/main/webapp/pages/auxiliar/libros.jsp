@@ -12,7 +12,7 @@
 	<%@include file="../../includes/mensaje.jsp"%>
 	<div class="row">
 		<div class="col-lg-12">
-			<h1 class="page-header">Libreria</h1>
+			<h1 class="page-header">Libros que disponemos en la libreria</h1>
 		</div>
 		<div class="panel panel-default">
 			<div class="panel-heading">
@@ -41,7 +41,7 @@
 							<th>Nombre</th>
 							<th>Editorial</th>
 							<th>Autor</th>
-							<th>argumento</th>
+							<th>Pais</th>
 							<th>Paginas</th>
 						</tr>
 					</thead>
@@ -61,7 +61,7 @@
 								title="Ir al detalle de <%=pojo.getNombre()%>"><%=pojo.getNombre()%></a></td>
 							<td><%=pojo.getEditorial()%></td>
 							<td><%=pojo.getAutor()%></td>
-							<td><%=pojo.getArgumento()%></td>
+							<td><%=pojo.getPais()%></td>
 							<td><%=pojo.getPaginas()%></td>
 						</tr>
 						<%

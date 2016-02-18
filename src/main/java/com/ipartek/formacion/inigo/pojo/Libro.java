@@ -16,7 +16,7 @@ public class Libro {
 	private String nombre;
 	private String editorial;
 	private String autor;
-	private String argumento;
+	private String pais;
 	private int paginas;
 
 	/********* CONSTRUCTORES **********/
@@ -26,17 +26,17 @@ public class Libro {
 		this.nombre = "";
 		this.editorial = "";
 		this.autor = "";
-		this.argumento = "";
+		this.pais = "";
 		this.paginas = 0;
 	}
 
-	public Libro(int id, String nombre, String editorial, String autor, String argumento, int paginas) {
+	public Libro(int id, String nombre, String editorial, String autor, String pais, int paginas) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.editorial = editorial;
 		this.autor = autor;
-		this.argumento = argumento;
+		this.pais = pais;
 		this.paginas = paginas;
 	}
 	
@@ -75,12 +75,12 @@ public class Libro {
 		this.autor = autor;
 	}
 
-	public String getArgumento() {
-		return argumento;
+	public String getPais() {
+		return pais;
 	}
 
-	public void setArgumento(String argumento) {
-		this.argumento = argumento;
+	public void setPais(String pais) {
+		this.pais = pais;
 	}
 
 	public int getPaginas() {
@@ -95,8 +95,8 @@ public class Libro {
 	
 	@Override
 	public String toString() {
-		return "Libro [id=" + id + ", nombre=" + nombre + ", editorial=" + editorial + ", autor=" + autor + ", argumento="
-				+ argumento + ", paginas=" + paginas + "]";
+		return "Libro [id=" + id + ", nombre=" + nombre + ", editorial=" + editorial + ", autor=" + autor + ", pais="
+				+ pais + ", paginas=" + paginas + "]";
 	}
 
 	
